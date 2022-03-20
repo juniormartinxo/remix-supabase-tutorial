@@ -23,11 +23,15 @@ export default function Index() {
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
       <h1>Blog Remix com Supabase</h1>
-      <ul>
+      <p>
+        <a href='/insert'>Inserir</a>
+      </p>
+      <ul style={{ listStyle: 'none' }}>
         {posts?.map(post => (
           <li key={post.post_uuid}>
-            <p>{post.post_title}</p>
-            <p>{post.post_text}</p>
+            <h3>{post.post_title}</h3>
+            <small>{post.post_author}</small>
+            <blockquote>{post.post_text}</blockquote>
           </li>
         ))}
       </ul>
