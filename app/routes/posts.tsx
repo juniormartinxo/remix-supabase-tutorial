@@ -8,7 +8,7 @@ export const loader: LoaderFunction = async () => {
   return posts
 }
 
-export default function Index() {
+export default function Posts() {
   const posts = useLoaderData<PostsModel[]>()
 
   return (
