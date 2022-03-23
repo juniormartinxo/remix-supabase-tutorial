@@ -55,13 +55,16 @@ Remix App Server started at http://localhost:3000
 ```
 
 Acesse `http://localhost:3000` e veja que existe uma app remix rodando, conforme a imagem abaixo:
+
 ![Imagem da aplicação default do REMIX, com o título "New Remix App", contendo a frase "Welcome to Remix" e abaixo três links, o primeiro (15m Quickstart Blog Tutorial) que direciona a um tutorial de como fazer um blog, o segundo (Deep Dive Jokes App Tutorial) que direciona para um tutorial de como fazer um site de piadas e o terceiro (Remix Docs) que direciona para a documentação do Remix.](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ruzo1fbdrzzmmwzw8z8h.png)
+
 *Imagem da aplicação default do REMIX, com o título "New Remix App", contendo a frase "Welcome to Remix" e abaixo três links, o primeiro (15m Quickstart Blog Tutorial) que direciona a um tutorial de como fazer um blog, o segundo (Deep Dive Jokes App Tutorial) que direciona para um tutorial de como fazer um site de piadas e o terceiro (Remix Docs) que direciona para a documentação do Remix.*
 
 ### 3. Estrutura do projeto Remix
 O Remix criará várias pastas no seu projeto, mas a mais importante e que iremos trabalhar será a pasta `app`, que é onde toda a mágica acontece. Dentro da pasta `app` haverá a pasta `routes`, que é onde ficam as rotas na nossa aplicação. A pasta `routes` é primoridal, pois ela é cerne de tudo é nela que toda simplicidade do Remix ganha força.
 
 ![A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nq9beep32cxm29qrqlol.png)
- *A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public*
+
+*A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public*
 
 
