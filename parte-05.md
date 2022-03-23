@@ -1,19 +1,21 @@
 Nesta parte iremos ver o quanto é fácil trabalhar com formulários no Remix, mas antes vamos melhorar nossa estrutura de arquivos, siga os seguintes passos:
 
 ### Criando o modelo
+
 Nas partes anteriores deste tutorial nós criamos a `PostModel` nos arquivos onde ele era necessário, mas agora iremos deixá-lo em lugar onde "quem precisar" na aplicação possa usá-lo, portanto, crie o arquivo `posts.model.ts` dentro da passta `routes/models/`, de forma que ele fique assim: `routes/models/posts.model.ts`.
 
 ### Criando a API
+
 Criado o modelo, podemos agora criar a API, que armazenará todas as ações que permitirão executar nosso CRUD, para isto, crie o arquivo `supabase-api.ts` dentro do diretório `routes/api/`, de forma que fique assim: `routes/api/supabase-api.ts`.
 
-1) Edite o arquivo `supabase-api.ts` e import o `PostsModels` e o cliente `supabase`, deixando-o assim:
+1. Edite o arquivo `supabase-api.ts` e import o `PostsModels` e o cliente `supabase`, deixando-o assim:
 
 ```ts
 import { PostsModel } from '~/models/posts.model'
 import { supabase } from '~/utils/supabase-client.server'
 ```
 
-2) Ainda no `supabase-api.ts`. crie a função `getPosts`, que ficará encarregada de realizar um `select` no Supabase para nós.
+2. Ainda no `supabase-api.ts`. crie a função `getPosts`, que ficará encarregada de realizar um `select` no Supabase para nós.
 
 ```ts
 const getPosts = async () => {
@@ -23,7 +25,8 @@ const getPosts = async () => {
 }
 ```
 
-3) Agora criaremos a função `addPost`, que ficará responsável por adicionar um registro novo.
+3. Agora criaremos a função `addPost`, que ficará responsável por adicionar um registro novo.
+
 ```ts
 const addPost = async ({ post_author, post_title, post_text }: PostsModel) => {
   const { data, error } = await supabase.from<PostsModel>('posts').insert([
@@ -38,13 +41,163 @@ const addPost = async ({ post_author, post_title, post_text }: PostsModel) => {
 }
 ```
 
-4) Por fim, exporte as duas funcões:
+4. Por fim, exporte as duas funcões:
+
 ```ts
 export { getPosts, addPost }
 ```
 
 ### Criando a rota `posts`
-Crie dentro da pasta `routes` um arquivo com nome `posts.tsx` e 
 
-### O quê é o `action: ActionFunction`
-O `action` é um método que faz com que o Remix entenda que quando um formulário enviar um request para determinada rota ele deverá executar este método para pegar informações que foram passadas.
+Crie dentro da pasta `routes` um arquivo com nome `posts.tsx` e dentro dele faça os seguintes imports:
+
+```ts
+import { Link, LoaderFunction, Outlet, useLoaderData } from 'remix'
+import { getPosts } from '~/api/supabase-api'
+import { PostsModel } from '~/models/posts.model'
+```
+
+- `Link` para criarmos o link que irá chamará o formulário para iserir um novo registro;
+- `LoaderFunction` para tiparmos o método `loader` que ficará responsável por chamar a função `getPosts`, que carrega os registros do banco de dados;
+- - `useLoaderData` permite façamos o uso dos dados carregados pelo `loader`;
+- `Outlet`, este componente é um wrapper em torno do Outlet do React Router com a capacidade de passar o estado da interface do usuário para rotas aninhadas. Ou seja, com ele será possível carregar a rota filha que conterá o fomulário dentro da rota pai `posts.tsx`;
+- `getPosts` é a função que carrega os registros do banco de dados; e
+- `postModels` é o `type model` dos dados que virão do banco de dados.
+
+Feita as importações chamaremos agora o método `loaderf` propriamente dito:
+
+```ts
+export const loader: LoaderFunction = async () => {
+  const posts = await getPosts()
+
+  return posts
+}
+```
+
+Agora iremos criar nosso componente `Posts`:
+
+```ts
+export default function Posts() {
+  const posts = useLoaderData<PostsModel[]>()
+
+  return (
+    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
+      <h1>Blog Remix com Supabase</h1>
+      <ul
+        style={{
+          listStyle: 'none',
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '8px',
+        }}
+      >
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <Link to={'new'}>Novo</Link>
+        </li>
+      </ul>
+      <div>
+        <Outlet />
+      </div>
+      <div>
+        <ul style={{ listStyle: 'none' }}>
+          {posts?.map(post => (
+            <li key={post.post_uuid}>
+              <h3>{post.post_title}</h3>
+              <small>{post.post_author}</small>
+              <blockquote>{post.post_text}</blockquote>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+```
+
+E, por fim, chamaremos a função `ErrorBoundary` do Remix, a qual nos permite que os erros sejam capturados dentro da rota que foi chamada, evitando assim que toda a aplicaçãose quebre:
+
+```ts
+export function ErrorBoundary({ error }: { error: Error }) {
+  return (
+    <div className='error-container'>
+      <h1>😱 App Error</h1>
+      <pre>❗ {error.message}</pre>
+    </div>
+  )
+}
+```
+
+### Criando o fomulário
+
+Criado a página de listagem dos posts, agora iremos criar a página que conterá o fomulário que permitira´que a gente insira novos registros, para isto crie dentro de `routes` a pasta `posts`, de forma que fique `routes/posts`. Dentro da pasta `posts` crie o arquivo `new.tsx` e faça as seguintes imports:
+
+```ts
+import { ActionFunction, redirect } from 'remix'
+import { supabase } from '~/utils/supabase-client.server'
+```
+
+- `ActionFunction` para tiparmos o método do Remix chamado `action` que é reponsável por "capturar" as variáveis enviadas pelo fomulário. Na verdade `action` pega todas varáveis de qualquer `request` na rota onde ele está.
+- `redirect` permite que a rota seja redirecionada
+- `supabase` é o nosso cliente do Supabase
+
+Feito os `imports`, chamaremos o método `action`:
+
+```ts
+export const action: ActionFunction = async ({ request }) => {
+  const inputs = Object.fromEntries(await request.formData())
+
+  await supabase.from('posts').insert([inputs])
+
+  return redirect('.')
+}
+```
+
+Agora criaremos o componente `NewPost` que conterá nosso formulário:
+
+```ts
+export default function NewPost() {
+  return (
+    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
+      <h1>Novo post</h1>
+      <form
+        action='#'
+        method='post'
+        style={{
+          listStyle: 'none',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '8px',
+        }}
+      >
+        <div>
+          <label htmlFor=''>Título</label>
+          <br />
+          <input type='text' name='post_title' />
+        </div>
+        <div>
+          <label htmlFor=''>Autor</label>
+          <br />
+          <input type='text' name='post_author' />
+        </div>
+        <div>
+          <label htmlFor=''>Texto</label>
+          <br />
+          <textarea
+            name='post_text'
+            id='post_text'
+            cols={30}
+            rows={10}
+          ></textarea>
+        </div>
+        <div>
+          <button type='submit'>Enviar</button>
+          <br />
+        </div>
+      </form>
+    </div>
+  )
+}
+```
