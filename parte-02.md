@@ -1,4 +1,4 @@
-### Mas afinal, o quê é o Supabse?
+### Mas afinal, o quê é o Supabase?
 De acordo com a página do Supabase ele é uma alternativa de código aberto ao Firebase. Onde, através dele é fornecido todos os serviços necessários para criar o back-end de um produto. Fornecendo:
 - Base de dados em Postgres;
 - Autenticação com gerenciamento de usuários;
