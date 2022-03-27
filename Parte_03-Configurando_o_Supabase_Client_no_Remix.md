@@ -1,3 +1,5 @@
+Nesta parte do tutorial iremos criar a configuração que nos permitirá conectar com a API do Supabase.
+
 ### 📑 Criando o arquivo `.env`
 
 ##### Passo 01
@@ -13,12 +15,12 @@ Na raiz do projeto crie o arquivo `.env` com as seguintes variáveis:
 - SUPABASE_URL; e
 - SUPABASE_KEY.
 
-##### Passo 03 - setando a variável `SUPABASE_KEY`
+##### Passo 03 - definindo o valor da variável `SUPABASE_KEY`
 
 1. Na janela do Dashboard do Supabase, aquela que deixamos aberta, observe que dentro do formulário `Project API Keys` existe o campo `anon` `public`, clique no botão `copy` para capturar o valor dele
 2. Agora cole o valor copiado para a variável `SUPABASE_KEY` no seu arquivo `.env`.
 
-##### Passo 04 - setando a variável `SUPABASE_URL`
+##### Passo 04 - definindo o valor da variável `SUPABASE_URL`
 
 Ainda no Dashboard do Supabase observe que existe o formulário `Configuration`. Agora precisamos copiar o valor do campo `URL`, para isto clique no botão `copy` e cole o valor copiado para a variável `SUPABASE_URL` no seu arquivo `.env`.
 
@@ -45,4 +47,4 @@ const supabaseKey = process.env?.SUPABASE_KEY as string
 export const supabase = createClient(supabaseUrl, supabaseKey)
 ```
 
-Pronto, nossa conexão com o banco de dados já está pronta, na parte 04 iremos iniciar nosso CRUD propriamente dito.
+Pronto, nossa conexão com o banco de dados já está pronta, na parte 04 iremos carregando e inserindo novos registros. Te vejo lá! 😉
