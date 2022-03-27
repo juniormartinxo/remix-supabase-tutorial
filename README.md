@@ -9,3 +9,4 @@ Este repositório contêm o código final gerado após a produção do Tutorial 
 - [Remix :: CRUD com Supabase - Parte 03 - Configurando o Supabase Client no Remix](#)
 - [Remix :: CRUD com Supabase - Parte 04 - Arrumando a casa](#)
 - [Remix :: CRUD com Supabase - Parte 05 - Trabalhando com formulário](#)
+- [Remix :: CRUD com Supabase - Parte 06 - Testando nossa aplicação](#)
