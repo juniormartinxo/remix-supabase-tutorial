@@ -229,3 +229,5 @@ export default function NewPost() {
   )
 }
 ```
+
+Na parte 06 iremos criar nosso primeiro post através do formulário criado.
