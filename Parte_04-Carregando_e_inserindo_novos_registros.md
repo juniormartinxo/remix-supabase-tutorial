@@ -1,3 +1,5 @@
+Nesta parte do tutorial verificaremos se a nossa comunicação com API do Supabase está funcionando corretamente e criaremos uma rota temporária que permitirá criar novos registros para testarmos as requisições.
+
 ### Editando o arquivo `app/index.tsx`
 
 Neste primeiro momento iremos verificar se a nossa conexão com o Supase está funcionando e para isto editaremos o arquivo `routes/index.tsx` responsável por chamar a rota `index` da nossa aplicação.
@@ -14,7 +16,7 @@ O `loader` é uma função executada em server-side e é ela que usamos no Remix
 
 ##### Que é o hook `useLoaderData`?
 
-O `useLoaderData` é um hook provido pelo próprio Remix para que se possa ter acesso ao que é exportado pelo `loader`
+O `useLoaderData` é um hook provido pelo próprio Remix para ter acesso ao que é exportado pelo `loader`
 
 2. Importe também o cliente do Supabase
 
@@ -36,7 +38,7 @@ type PostsModel = {
 }
 ```
 
-4. Agora, iremos dar um `select` no Supabase para carregar as informações dos registros no `loader`:
+4. Agora, daremos um `select` no Supabase para carregar as informações dos registros no `loader`:
 
 ```ts
 export const loader: LoaderFunction = async () => {
@@ -59,7 +61,19 @@ export default function Index() {
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
       <h1>Blog Remix com Supabase</h1>
       <p>
-        <a href='/insert'>Inserir</a>
+        <a
+          href='/'
+          style={{
+            textDecoration: 'none',
+            backgroundColor: '#ef62df',
+            color: '#fff',
+            padding: '8px',
+            borderRadius: '4px',
+            fontSize: '14px',
+          }}
+        >
+          Inserir
+        </a>
       </p>
       <ul style={{ listStyle: 'none' }}>
         {posts?.map(post => (
@@ -75,9 +89,9 @@ export default function Index() {
 }
 ```
 
-Para ver se tudo deu certo, rode o comando `npm run dev` e você perceberá que irá aparecer apenas o título `Blog Remix com Supabase`, pois não há nenhum registro inserido na base de dados.
+Para ver se deu certo, rode o comando `npm run dev` e você perceberá que irá aparecer apenas o título `Blog Remix com Supabase`, pois não há nenhum registro inserido na base de dados.
 
-> Repare que foi criado um link `insert` logo abaixo do título `Blog Remix com Supabase`, se clicarmos nele agora seremos direcionados para uma página que não existe ainda e, inevitavelmente, receberemos um erro `404`, mas isto será resolvido nos próximos passos.
+> Repare que foi criado um link `Inserir` logo abaixo do título `Blog Remix com Supabase`, se clicarmos nele agora seremos direcionados para uma página que não existe ainda e, inevitavelmente, receberemos um erro `404`, mas isto será resolvido nos próximos passos.
 
 ### Criando a Rota temporária `insert`
 
@@ -106,7 +120,7 @@ type PostsModel = {
 }
 ```
 
-3. Chame o método `loader`, mas agora dando um `insert` no Supabase:
+3. Vamos chamar o método `loader` dando um `insert` no Supabase, desta forma:
 
 ```ts
 export const loader: LoaderFunction = async () => {
