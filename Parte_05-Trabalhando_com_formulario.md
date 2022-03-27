@@ -1,12 +1,24 @@
 Nesta parte iremos ver o quanto é fácil trabalhar com formulários no Remix, mas antes vamos melhorar nossa estrutura de arquivos, siga os seguintes passos:
 
-### Criando o modelo
+### 🎲 Criando o modelo
 
-Nas partes anteriores deste tutorial nós criamos a `PostModel` nos arquivos onde ele era necessário, mas agora iremos deixá-lo em lugar onde "quem precisar" na aplicação possa usá-lo, portanto, crie o arquivo `posts.model.ts` dentro da passta `routes/models/`, de forma que ele fique assim: `routes/models/posts.model.ts`.
+Nas partes anteriores deste tutorial nós criamos a `PostModel` nos arquivos onde ele era necessário, mas agora iremos deixá-lo em lugar onde "quem precisar" na aplicação possa usá-lo, portanto, crie o arquivo `posts.model.ts` dentro da pasta `app/models/`, de forma que ele fique assim: `app/models/posts.model.ts`. Edite-o e deixe desta forma:
+
+```ts
+export type PostsModel = {
+  post_id?: number
+  post_uuid?: string
+  post_author: string
+  post_title: string
+  post_text: string
+  post_situation?: string
+  post_created_at?: string
+}
+```
 
 ### Criando a API
 
-Criado o modelo, podemos agora criar a API, que armazenará todas as ações que permitirão executar nosso CRUD, para isto, crie o arquivo `supabase-api.ts` dentro do diretório `routes/api/`, de forma que fique assim: `routes/api/supabase-api.ts`.
+Criado o modelo, podemos agora criar a API, que armazenará todas as ações que permitirão executar nosso CRUD, para isto, crie o arquivo `supabase-api.ts` dentro do diretório `app/api/`, de forma que fique assim: `app/api/supabase-api.ts`.
 
 1. Edite o arquivo `supabase-api.ts` e import o `PostsModels` e o cliente `supabase`, deixando-o assim:
 
@@ -19,7 +31,10 @@ import { supabase } from '~/utils/supabase-client.server'
 
 ```ts
 const getPosts = async () => {
-  const { data: posts } = await supabase.from<PostsModel>('posts').select('*')
+  const { data: posts } = await supabase
+    .from<PostsModel>('posts')
+    .select('*')
+    .order('post_id', { ascending: false })
 
   return posts
 }
@@ -135,7 +150,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
 Criado a página de listagem dos posts, agora iremos criar a página que conterá o fomulário que permitirá que a gente insira novos registros, para isto crie dentro de `routes` a pasta `posts`, de forma que fique `routes/posts`. Dentro da pasta `posts` crie o arquivo `new.tsx` e faça as seguintes imports:
 
 ```ts
-import { ActionFunction, redirect } from 'remix'
+import { ActionFunction, Link, redirect } from 'remix'
 import { supabase } from '~/utils/supabase-client.server'
 ```
 
