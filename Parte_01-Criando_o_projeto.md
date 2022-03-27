@@ -5,7 +5,12 @@ Olá! Neste tutorial você aprenderá como fazer um CRUD completo usando Remix e
 Faremos um CRUD completo com estas duas ferramentas maravilhosas e que sou suspeito de falar, mas não consigo ver você não se apaixonando ao término de passo-a-passo.
 
 > Se você já sabe como criar um projeto com REMIX, pode pular para as próximas partes:
-> [Remix :: CRUD com Supabase - Parte 01 - Criando o projeto](#) > [Remix :: CRUD com Supabase - Parte 02 - Instalando o Supabase](#) > [Remix :: CRUD com Supabase - Parte 03 - Configurando o Supabase Client no Remix](#) > [Remix :: CRUD com Supabase - Parte 04 - Arrumando a casa](#) > [Remix :: CRUD com Supabase - Parte 05 - Trabalhando com formulário](#) > [Remix :: CRUD com Supabase - Parte 06 - Testando nossa aplicação](#)
+
+- [Remix :: CRUD com Supabase - Parte 02 - Instalando o Supabase](#)
+- [Remix :: CRUD com Supabase - Parte 03 - Configurando o Supabase Client no Remix](#)
+- [Remix :: CRUD com Supabase - Parte 04 - Arrumando a casa](#)
+- [Remix :: CRUD com Supabase - Parte 05 - Trabalhando com formulário](#)
+- [Remix :: CRUD com Supabase - Parte 06 - Testando nossa aplicação](#)
 
 ### Techs utilizadas
 
@@ -70,13 +75,11 @@ Remix App Server started at http://localhost:3000
 
 Acesse `http://localhost:3000` e veja que existe um app Remix rodando, conforme a imagem abaixo:
 ![Imagem da aplicação default do REMIX, com o título "New Remix App", contendo a frase "Welcome to Remix" e abaixo três links, o primeiro (15m Quickstart Blog Tutorial) que direciona a um tutorial de como fazer um blog, o segundo (Deep Dive Jokes App Tutorial) que direciona para um tutorial de como fazer um site de piadas e o terceiro (Remix Docs) que direciona para a documentação do Remix.](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ruzo1fbdrzzmmwzw8z8h.png)
-_Imagem da aplicação default do REMIX, com o título "New Remix App", contendo a frase "Welcome to Remix" e abaixo três links, o primeiro (15m Quickstart Blog Tutorial) que direciona a um tutorial de como fazer um blog, o segundo (Deep Dive Jokes App Tutorial) que direciona para um tutorial de como fazer um site de piadas e o terceiro (Remix Docs) que direciona para a documentação do Remix._
 
 ### 3. Estrutura do projeto Remix
 
 O Remix criará várias pastas no seu projeto, mas a mais importante e que iremos trabalhar será a pasta `app`, que é onde toda a mágica acontece. Dentro da pasta `app` você encontrará a pasta `routes`, que é onde ficam as rotas da nossa aplicação. A pasta `routes` é primoridal, pois ela é o cerne de tudo e é nela que toda simplicidade do Remix ganha força.
 
-![A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nq9beep32cxm29qrqlol.png)
-_A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public e os arquivos .eslintrc, .gitignore, package-lock.json, package.json, README[dot]md, remix.config.js, remix.env.d.ts e tsconfig.json_
+![A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public e os arquivos .eslintrc, .gitignore, package-lock.json, package.json, README[dot]md, remix.config.js, remix.env.d.ts e tsconfig.json](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nq9beep32cxm29qrqlol.png)
 
 Na parte 02 criaremos a nossa base de dados no Supabase e faremos a instalaremos o `supabase-js` na nossa aplicação. Te vejo lá! 😉
