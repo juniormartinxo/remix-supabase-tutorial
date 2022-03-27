@@ -42,9 +42,9 @@ Crie seu projeto:
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vnolr4br20nl91qvjbcv.png)
 
-Finalizada a instalação, abra o projeto criado com o seu editor de texto de preferência:
+Finalizada a instalação, abra o projeto criado com o editor de sua preferência:
 
-No meu caso, como utilizareis VSCode:
+Se assim como eu, você estiver utilizando o `VSCode`, basta digitar os comandos abaixo:
 
 ```
 > cd remix-supabase
@@ -53,8 +53,11 @@ No meu caso, como utilizareis VSCode:
 
 ### 2. Testando se tudo foi criado corretamente
 
-Para testar se sua aplicação REMIX foi criada de forma correta rode o comando
-`npm run dev`
+Para testar se sua aplicação REMIX foi criada de forma correta rode o comando:
+
+```
+npm run dev
+```
 
 Deve aparecer a seguinte mensagem no terminal:
 
@@ -73,7 +76,9 @@ _Imagem da aplicação default do REMIX, com o título "New Remix App", contendo
 
 ### 3. Estrutura do projeto Remix
 
-O Remix criará várias pastas no seu projeto, mas a mais importante e que iremos trabalhar será a pasta `app`, que é onde toda a mágica acontece. Dentro da pasta `app` haverá a pasta `routes`, que é onde ficam as rotas na nossa aplicação. A pasta `routes` é primoridal, pois ela é cerne de tudo é nela que toda simplicidade do Remix ganha força.
+O Remix criará várias pastas no seu projeto, mas a mais importante e que iremos trabalhar será a pasta `app`, que é onde toda a mágica acontece. Dentro da pasta `app` haverá a pasta `routes`, que é onde ficam as rotas da nossa aplicação. A pasta `routes` é primoridal, pois ela é cerne de tudo é nela que toda simplicidade do Remix ganha força.
 
 ![A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nq9beep32cxm29qrqlol.png)
 _A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public_
+
+Na parte 02 instaleremos criaremos a nossa base de dados Supabase na nossa aplicação e instalaremos ele na nossa aplicação. Te vejo lá! 😉
