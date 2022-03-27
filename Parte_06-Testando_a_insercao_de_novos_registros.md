@@ -71,4 +71,4 @@ Clique no botão `Novo` e reparece que o formulário abrirá logoa acima da visu
 
 Agora, para ter certeza que tudo está funcionando, clique em novo, preencha todos os dados e depois clique em `enviar`. SDe tudo deu certo até aqui, um novo post aparecerá abaixo dos botões `Home`e `Novo`.
 
-Com isto finalizamos esta primeira parte do tutprial, nos próximos faremos a edição e exclusão dos registros.
+Com isto finalizamos esta primeira parte do tutprial, na parte 07 daremos início a edição e exclusão dos registros.
