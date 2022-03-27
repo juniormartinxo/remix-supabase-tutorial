@@ -59,7 +59,7 @@ import { PostsModel } from '~/models/posts.model'
 
 - `Link` para criarmos o link que irá chamará o formulário para iserir um novo registro;
 - `LoaderFunction` para tiparmos o método `loader` que ficará responsável por chamar a função `getPosts`, que carrega os registros do banco de dados;
-- - `useLoaderData` permite façamos o uso dos dados carregados pelo `loader`;
+- `useLoaderData` permite façamos o uso dos dados carregados pelo `loader`;
 - `Outlet`, este componente é um wrapper em torno do Outlet do React Router com a capacidade de passar o estado da interface do usuário para rotas aninhadas. Ou seja, com ele será possível carregar a rota filha que conterá o fomulário dentro da rota pai `posts.tsx`;
 - `getPosts` é a função que carrega os registros do banco de dados; e
 - `postModels` é o `type model` dos dados que virão do banco de dados.
@@ -117,7 +117,7 @@ export default function Posts() {
 }
 ```
 
-E, por fim, chamaremos a função `ErrorBoundary` do Remix, a qual nos permite que os erros sejam capturados dentro da rota que foi chamada, evitando assim que toda a aplicaçãose quebre:
+E, por fim, chamaremos a função `ErrorBoundary` do Remix, a qual permite que os erros sejam capturados dentro da rota que foi chamada, evitando assim que toda a aplicaçãose quebre:
 
 ```ts
 export function ErrorBoundary({ error }: { error: Error }) {
@@ -132,7 +132,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
 
 ### Criando o fomulário
 
-Criado a página de listagem dos posts, agora iremos criar a página que conterá o fomulário que permitira´que a gente insira novos registros, para isto crie dentro de `routes` a pasta `posts`, de forma que fique `routes/posts`. Dentro da pasta `posts` crie o arquivo `new.tsx` e faça as seguintes imports:
+Criado a página de listagem dos posts, agora iremos criar a página que conterá o fomulário que permitirá que a gente insira novos registros, para isto crie dentro de `routes` a pasta `posts`, de forma que fique `routes/posts`. Dentro da pasta `posts` crie o arquivo `new.tsx` e faça as seguintes imports:
 
 ```ts
 import { ActionFunction, redirect } from 'remix'
@@ -193,7 +193,35 @@ export default function NewPost() {
           ></textarea>
         </div>
         <div>
-          <button type='submit'>Enviar</button>
+          <button
+            type='submit'
+            style={{
+              backgroundColor: '#62a4ef',
+              color: '#fff',
+              padding: '8px',
+              borderRadius: '4px',
+              border: 'none',
+              lineHeight: '1.4',
+              fontSize: '14px',
+              cursor: 'pointer',
+            }}
+          >
+            Enviar
+          </button>
+          <Link
+            to={'/posts'}
+            style={{
+              marginLeft: '10px',
+              textDecoration: 'none',
+              backgroundColor: '#ef62df',
+              color: '#fff',
+              padding: '8px',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          >
+            Cancelar
+          </Link>
           <br />
         </div>
       </form>

@@ -1,4 +1,4 @@
-import { ActionFunction, redirect } from 'remix'
+import { ActionFunction, Link, redirect } from 'remix'
 import { supabase } from '~/utils/supabase-client.server'
 
 export const action: ActionFunction = async ({ request }) => {
@@ -44,7 +44,35 @@ export default function NewPost() {
           ></textarea>
         </div>
         <div>
-          <button type='submit'>Enviar</button>
+          <button
+            type='submit'
+            style={{
+              backgroundColor: '#62a4ef',
+              color: '#fff',
+              padding: '8px',
+              borderRadius: '4px',
+              border: 'none',
+              lineHeight: '1.4',
+              fontSize: '14px',
+              cursor: 'pointer',
+            }}
+          >
+            Enviar
+          </button>
+          <Link
+            to={'/posts'}
+            style={{
+              marginLeft: '10px',
+              textDecoration: 'none',
+              backgroundColor: '#ef62df',
+              color: '#fff',
+              padding: '8px',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          >
+            Cancelar
+          </Link>
           <br />
         </div>
       </form>
