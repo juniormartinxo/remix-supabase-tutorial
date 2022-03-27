@@ -15,6 +15,7 @@ Faremos um CRUD completo com estas duas ferramentas maravilhosas e que sou suspe
 
 ### Pré-requisitos
 
+- Uma conta no [GitHub](https://github.com/)
 - Node.js 14 ou superior
 - npm 7 ou superior
 - Um editor de código de sua preferência, aqui utilizaremos o VSCode
