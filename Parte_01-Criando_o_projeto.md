@@ -78,4 +78,4 @@ O Remix criará várias pastas no seu projeto, mas a mais importante e que iremo
 ![A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nq9beep32cxm29qrqlol.png)
 _A imagem traz a estrutura das pastas principais do Remix listadas em: .cache, app>routes, build, node_modules e public e os arquivos .eslintrc, .gitignore, package-lock.json, package.json, README[dot]md, remix.config.js, remix.env.d.ts e tsconfig.json_
 
-Na parte 02 e criaremos a nossa base de dados Supabase na nossa aplicação. Te vejo lá! 😉
+Na parte 02 criaremos a nossa base de dados no Supabase e faremos a instalaremos o `supabase-js` na nossa aplicação. Te vejo lá! 😉
