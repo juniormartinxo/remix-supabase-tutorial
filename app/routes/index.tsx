@@ -13,7 +13,19 @@ export default function Index() {
         }}
       >
         <li>
-          <Link to={'posts'}>Visualizar Posts</Link>
+          <Link
+            to={'posts'}
+            style={{
+              textDecoration: 'none',
+              backgroundColor: '#ef62df',
+              color: '#fff',
+              padding: '8px',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          >
+            Visualizar Posts
+          </Link>
         </li>
       </ul>
     </div>

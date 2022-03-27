@@ -107,10 +107,34 @@ export default function Posts() {
         }}
       >
         <li>
-          <a href='/'>Home</a>
+          <a
+            href='/'
+            style={{
+              textDecoration: 'none',
+              backgroundColor: '#ef62df',
+              color: '#fff',
+              padding: '8px',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          >
+            Home
+          </a>
         </li>
         <li>
-          <Link to={'new'}>Novo</Link>
+          <Link
+            to={'new'}
+            style={{
+              textDecoration: 'none',
+              backgroundColor: '#62efd0',
+              color: '#0d6443',
+              padding: '8px',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          >
+            Novo
+          </Link>
         </li>
       </ul>
       <div>
