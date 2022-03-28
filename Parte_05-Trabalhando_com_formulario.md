@@ -1,4 +1,4 @@
-Nesta parte iremos ver o quanto é fácil trabalhar com formulários no Remix, mas antes vamos melhorar nossa estrutura de arquivos, siga os seguintes passos:
+Nesta parte veremos o quanto é fácil trabalhar com formulários no Remix, iremos melhorar nossa estrutura de arquivos, colocando as coisas nos lugares certos para evitar código duplicado e permitir assim o reaproveitamento na nossa aplicação.
 
 ### 🎲 Criando o modelo
 
@@ -18,7 +18,7 @@ export type PostsModel = {
 
 ### Criando a API
 
-Criado o modelo, podemos agora criar a API, que armazenará todas as ações que permitirão executar nosso CRUD, para isto, crie o arquivo `supabase-api.ts` dentro do diretório `app/api/`, de forma que fique assim: `app/api/supabase-api.ts`.
+Criado o modelo, podemos agora trabalhar com a API, que armazenará todas as ações que permitirão executar nosso CRUD, para isto, crie o arquivo `supabase-api.ts` dentro do diretório `app/api/`, de forma que fique assim: `app/api/supabase-api.ts`.
 
 1. Edite o arquivo `supabase-api.ts` e import o `PostsModels` e o cliente `supabase`, deixando-o assim:
 
@@ -79,7 +79,7 @@ import { PostsModel } from '~/models/posts.model'
 - `getPosts` é a função que carrega os registros do banco de dados; e
 - `postModels` é o `type model` dos dados que virão do banco de dados.
 
-Feita as importações chamaremos agora o método `loaderf` propriamente dito:
+Feito as importações criaremos o método `loader` para chamar a `getPosts`:
 
 ```ts
 export const loader: LoaderFunction = async () => {
@@ -169,9 +169,9 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 ```
 
-### Criando o fomulário
+### Criando a página do fomulário
 
-Criado a página de listagem dos posts, agora iremos criar a página que conterá o fomulário que permitirá que a gente insira novos registros, para isto crie dentro de `routes` a pasta `posts`, de forma que fique `routes/posts`. Dentro da pasta `posts` crie o arquivo `new.tsx` e faça as seguintes imports:
+Criado a página de listagem dos posts, iremos criar a página que conterá o fomulário que permitirá que a gente insira novos registros, para isto crie a pasta `posts` dentro de `routes`, de forma que fique `routes/posts`. Dentro da pasta `posts` crie o arquivo `new.tsx` e faça as seguintes imports:
 
 ```ts
 import { ActionFunction, Link, redirect } from 'remix'
@@ -269,4 +269,4 @@ export default function NewPost() {
 }
 ```
 
-Na parte 06 iremos criar nosso primeiro post através do formulário criado.
+Com isto finalizamos o formulário e na parte 06 iremos criar nosso primeiro post através do formulário criado. Te espero lá! 😉
